@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies App</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" name="" id="title" placeholder="Title" />
+      <input type="text" name="" id="rating" placeholder="Rating" />
+      <button type="submit">Submit</button>
+    </form>
+    <ul id=""></ul>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+      function removeCurrentElement() {
+        $(this).remove();
+      }
+
+      $("form").on("submit", function (e) {
+        e.preventDefault();
+        let title = $("#title").val();
+        let rating = $("#rating").val();
+        // 1. make the li element here
+        const $liElement = $(
+          "<li>" +
+            title +
+            ", has a rating of " +
+            rating +
+            '<button class="removeBtn">Remove</button></li>'
+        );
+
+        // 2. append it
+        $("ul").append($liElement);
+
+        // 3. bind function to li element
+        $liElement.on("click", removeCurrentElement);
+      });
+
+      // bind function to all existing li elements
+      $("li").on("click", removeCurrentElement);
+    </script>
+  </body>
+</html>
